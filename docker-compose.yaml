@@ -31,7 +31,7 @@ services:
       - 3001:3001
     restart: unless-stopped
   api-post:
-    image: post-service:0
+    image: post-service:latest
     build:
       context: ./postService/
       dockerfile: Dockerfile

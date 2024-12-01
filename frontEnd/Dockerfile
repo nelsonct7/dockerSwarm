@@ -11,12 +11,15 @@ RUN --mount=type=cache,target=/user/src/app/.npm \
 
 COPY . .
 
-
 RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.23-alpine-perl
 
-COPY nginx.config /etc/nginx/config.d/default.config
+# Remove the default nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy your nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 

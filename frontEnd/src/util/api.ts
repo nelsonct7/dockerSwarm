@@ -79,11 +79,11 @@ console.log("[!] IsLocal ",localHost);
 // Use relative URLs or environment variables
 const AUTH_API_URL = localHost 
   ? 'http://localhost:3001'
-  : 'http://98.84.133.3:3001/'; // This will be handled by Nginx
+  : '/auth-api'; // This will be handled by Nginx
 
 const POST_API_URL = localHost 
   ? 'http://localhost:3002/api'
-  : 'http://98.84.133.3:3002/api'; // This will be handled by Nginx
+  : '/post-api'; // This will be handled by Nginx
 
 export const authServiceClient: AxiosInstance = createApiClient(
   AUTH_API_URL,

@@ -7,13 +7,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/auth-api': {
-        target: 'http://localhost:8080',
+        target: 'http://api-auth:3001',
         changeOrigin: true,
         rewrite: (path) => path.replace('/auth-api', ''),
         secure: false,
       },
       '/post-api': {
-        target: 'http://localhost:3000',
+        target: 'http://api-node:3002/api',
         changeOrigin: true,
         rewrite: (path) => path.replace('/post-api', ''),
         secure: false,

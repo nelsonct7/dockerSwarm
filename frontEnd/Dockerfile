@@ -11,7 +11,6 @@ RUN --mount=type=cache,target=/user/src/app/.npm \
 
 COPY . .
 
-ENV NODE_ENV=production
 
 RUN npm run build
 

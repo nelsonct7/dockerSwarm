@@ -1,4 +1,4 @@
-name: Docker Image Auth Service
+name: Docker Image Post Service
 
 on:
   push:

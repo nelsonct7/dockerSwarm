@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
         }
 
         const options = {
-            hostname: 'localhost',
+            hostname: process.env.AUTH_SERVER||'localhost',
             port: 3001,
             path: '/user/verify',
             method: 'POST',

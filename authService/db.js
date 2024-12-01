@@ -6,6 +6,7 @@ const dbUrl=process.env.DB_URL || fs.readFileSync(process.env.DATABASE_URL_FILE,
 
 const connectToDb=async(cb)=>{
     try{
+        console.log("[!] DB URL ",dbUrl);
         await mongoose.connect(dbUrl)
         cb(dbUrl)
     }catch(error){

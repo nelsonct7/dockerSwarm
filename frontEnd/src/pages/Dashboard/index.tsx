@@ -1,4 +1,3 @@
-import * as React from "react";
 import Container from "@mui/material/Container";
 import AppAppBar from "./components/AppAppBar";
 import Latest from "./components/Latest";

@@ -33,7 +33,6 @@ const createApiClient = (
       return shouldRetry || isConnectionTimeout;
     },
     // Optional: Implement onRetry callback for logging
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onRetry: (
       retryCount: number,
       error: AxiosError,
@@ -61,8 +60,8 @@ const createApiClient = (
           status: error.response?.status,
           url: error.config?.url,
         });
-        if(error.response?.status===401){
-          localStorage.removeItem("swarm-user-token")
+        if (error.response?.status === 401) {
+          localStorage.removeItem("swarm-user-token");
         }
       } else {
         console.error(`${serviceName} Unexpected Error:`, error);
@@ -74,22 +73,13 @@ const createApiClient = (
   return client;
 };
 
-// Type-safe environment variable helper
-const getEnvVariable = (key: string, defaultValue: string): string => {
-  const value = process.env[key];
-  if (!value && process.env.NODE_ENV === "production") {
-    console.warn(`Environment variable ${key} is not set, using default value`);
-  }
-  return value || defaultValue;
-};
-
 export const authServiceClient: AxiosInstance = createApiClient(
-  getEnvVariable("AUTH_SERVICE_URL", "http://localhost:3001"),
+  "http://localhost:3001",
   "Auth"
 );
 
 export const postServiceClient: AxiosInstance = createApiClient(
-  getEnvVariable("POST_SERVICE_URL", "http://localhost:3002/api"),
+  "http://localhost:3002/api",
   "Post"
 );
 
@@ -115,5 +105,3 @@ export type ApiSuccessResponse<T> = {
   status: number;
   message?: string;
 };
-
-

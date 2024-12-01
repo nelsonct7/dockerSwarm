@@ -141,7 +141,7 @@ export default function Latest() {
       handleClearSelectedPost();
       setLoadingPost(false);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   const handleSubmitPost = React.useCallback(async () => {
     try {

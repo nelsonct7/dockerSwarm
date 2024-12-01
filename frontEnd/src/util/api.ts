@@ -73,13 +73,19 @@ const createApiClient = (
   return client;
 };
 
+const localHost=window.location.href.includes('localhost')
+console.log("[!] IsLocal ",localHost);
+// Get the API URLs from Vite environment variables
+const AUTH_API_URL = !localHost?'http://98.84.133.3:3001':'http://localhost:3001';
+const POST_API_URL = !localHost?'http://98.84.133.3:3002/api':'http://localhost:3002/api';
+
 export const authServiceClient: AxiosInstance = createApiClient(
-  "http://localhost:3001",
+  AUTH_API_URL,
   "Auth"
 );
 
 export const postServiceClient: AxiosInstance = createApiClient(
-  "http://localhost:3002/api",
+  POST_API_URL,
   "Post"
 );
 

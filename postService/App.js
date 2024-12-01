@@ -29,15 +29,15 @@ app.use(function (err, req, res, next) {
 
 // db connection call back
 const dbCb = (dbUrl) =>
-  console.log("[!] Connection established from auth server to db at", dbUrl);
+  console.log("[!] Connection established from post server to db at", dbUrl);
 
 // connect to db
 connectToDb(dbCb)
   .then((data) => {
     app.listen(port, () => {
-      console.log(`Auth app listening on port ${port}`);
+      console.log(`Post app listening on port ${port}`);
     });
   })
   .catch((error) => {
-    console.error("[!] Auth server failed", error);
+    console.error("[!] Post server failed", error);
   });

@@ -1,0 +1,13 @@
+FROM ubuntu:22.04
+
+RUN apt update
+
+RUN apt install nodejs npm -y
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 3001
+
+CMD [ "npm","run","dev" ]

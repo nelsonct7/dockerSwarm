@@ -1,6 +1,25 @@
 version: '3.7'
 
 services:
+  client-react-vite:
+    image: client-react-vite
+    build:
+      context: ./frontEnd/
+      dockerfile: Dockerfile.1
+    init: true
+    volumes:
+      - type: bind
+        source: ./frontEnd/
+        target: /usr/src/app/
+      - type: volume
+        target: /usr/src/app/node_modules 
+      - type: bind
+        source: ./frontEnd/vite.config.ts
+        target: /usr/src/app/vite.config.ts
+    networks:
+      - frontend
+    ports:
+      - 5173:5173
   client-react-nginx:
     image: front-end:latest
     build:
